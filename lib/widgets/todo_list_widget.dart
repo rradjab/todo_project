@@ -4,16 +4,11 @@ import 'package:todo_project/models/todo_model.dart';
 import 'package:todo_project/providers/provider.dart';
 import 'package:todo_project/widgets/list_item_widget.dart';
 
-class TodoListWidget extends ConsumerStatefulWidget {
+class TodoListWidget extends ConsumerWidget {
   const TodoListWidget({super.key});
 
   @override
-  ConsumerState<ConsumerStatefulWidget> createState() => _TodoListWidget();
-}
-
-class _TodoListWidget extends ConsumerState<TodoListWidget> {
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     List<TodoModel> todos = ref.watch(checkProvider);
     final filter = ref.watch(filterProvider);
     List<ListItemWidget> itemsList = [
