@@ -12,7 +12,11 @@ class ListItemWidget extends ConsumerWidget {
     return Dismissible(
       key: ValueKey(todos.id),
       child: ListTile(
-        title: Text(todos.description),
+        title: TextFormField(
+          initialValue: todos.description,
+          onChanged: (value) =>
+              ref.read(checkProvider.notifier).update(todos.id, value),
+        ),
         leading: Checkbox(
           value: todos.isCompleted,
           onChanged: (value) =>

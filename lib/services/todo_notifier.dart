@@ -24,4 +24,14 @@ class TodoNotifier extends StateNotifier<List<TodoModel>> {
           todo,
     ];
   }
+
+  void update(String todoId, String description) {
+    state = [
+      for (final todo in state)
+        if (todo.id == todoId)
+          todo.copyWith(description: description)
+        else
+          todo,
+    ];
+  }
 }
